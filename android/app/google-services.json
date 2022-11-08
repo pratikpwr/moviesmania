@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430212391363",
+    "project_id": "moviemania-f2f7e",
+    "storage_bucket": "moviemania-f2f7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430212391363:android:6d174fb4e4a78d8cf91d76",
+        "android_client_info": {
+          "package_name": "com.pratik.movie_mania"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430212391363-i3uo5vcu16jigunr5s1epk0kkblvg0es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf2V5a4jaFx2bCdXBZ6npUsSofCMIlRJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430212391363-i3uo5vcu16jigunr5s1epk0kkblvg0es.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

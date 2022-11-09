@@ -20,6 +20,8 @@ class LabelledTextFieldItem extends StatelessWidget {
     this.onChanged,
     this.inputFormatters,
     this.textAlignment = TextAlign.start,
+    this.suffixIcon,
+    this.onTapSuffix,
   }) : super(key: key);
 
   final String? title;
@@ -37,6 +39,9 @@ class LabelledTextFieldItem extends StatelessWidget {
   final Function(String)? onFieldSubmitted, onChanged;
 
   final TextAlign textAlignment;
+
+  final IconData? suffixIcon;
+  final VoidCallback? onTapSuffix;
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +69,16 @@ class LabelledTextFieldItem extends StatelessWidget {
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         hintText: hintText,
-        border: const OutlineInputBorder(borderSide: BorderSide()),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide()),
+        border: OutlineInputBorder(
+            borderSide: const BorderSide(),
+            borderRadius: BorderRadius.circular(10)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(),
+            borderRadius: BorderRadius.circular(10)),
+        suffixIcon: IconButton(
+          onPressed: onTapSuffix,
+          icon: Icon(suffixIcon),
+        ),
       ),
       maxLines: maxLines,
       validator: validator,

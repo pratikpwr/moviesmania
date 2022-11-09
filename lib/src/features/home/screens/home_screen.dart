@@ -4,12 +4,20 @@ import 'package:movie_mania/src/features/horizontal_movies/widgets/horizontal_mo
 
 import '../../../core/views/atomic/atoms/padding.dart';
 
-class HomeScreen extends StatelessWidget {
+enum _SelectedTab { home, search, person }
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -36,22 +44,26 @@ class HomeScreen extends StatelessWidget {
                 title: 'Action',
                 type: MovieListType.genre,
                 param: '28',
-              ),padding8,
+              ),
+              padding8,
               HorizontalMoviesWidget(
                 title: 'Horror',
                 type: MovieListType.genre,
                 param: '27',
-              ),padding8,
+              ),
+              padding8,
               HorizontalMoviesWidget(
                 title: 'Science Fiction',
                 type: MovieListType.genre,
                 param: '878',
-              ),padding8,
+              ),
+              padding8,
               HorizontalMoviesWidget(
                 title: 'Animation',
                 type: MovieListType.genre,
                 param: '16',
               ),
+              padding8,
             ],
           ),
         ),

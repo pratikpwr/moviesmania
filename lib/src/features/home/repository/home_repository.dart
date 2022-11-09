@@ -5,6 +5,7 @@ import 'package:movie_mania/src/core/network/api_client.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../core/network/network_info.dart';
+import '../../horizontal_movies/models/movie_list_type.dart';
 import '../models/movie_summary_model.dart';
 
 abstract class HomeRepository {
@@ -33,10 +34,10 @@ class HomeRepositoryImpl implements HomeRepository {
           );
 
       if (response.data["success"] != null && !(response.data["success"])) {
-        return Left(ServerFailure());
+        return const Left(ServerFailure());
       }
 
-      // try {
+      try {
         final result = List<MovieSummary>.from(
           response.data["results"].map(
             (element) {
@@ -45,10 +46,10 @@ class HomeRepositoryImpl implements HomeRepository {
           ),
         );
         return Right(result);
-      // } catch (e) {
-      //   debugPrint(e.toString());
-      //   return Left(InternalFailure(e.toString()));
-      // }
+      } catch (e) {
+        debugPrint(e.toString());
+        return Left(InternalFailure(e.toString()));
+      }
     } else {
       return const Left(NoInternetFailure());
     }

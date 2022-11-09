@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_mania/src/core/extension/context_extension.dart';
+import 'package:movie_mania/src/features/horizontal_movies/models/movie_list_type.dart';
+import 'package:movie_mania/src/features/horizontal_movies/widgets/horizontal_movies_widget.dart';
 
-import '../../../core/views/widgets/failure_view.dart';
-import '../../../core/views/widgets/loader.dart';
-import '../../../core/views/widgets/unknown_state.dart';
-import '../bloc/get_movies/get_movies_bloc.dart';
-import '../models/movie_summary_model.dart';
+import '../../../core/views/atomic/atoms/padding.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,87 +10,52 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Movies'),
-      ),
-      body: SingleChildScrollView(
-        child: BlocBuilder<GetMoviesBloc, GetMoviesState>(
-          builder: (context, state) {
-            if (state is GetMoviesLoading) {
-              return const Loader();
-            }
-            if (state is GetMoviesSuccess) {
-              return HorizontalMovies(title: "Popular", projects: state.movies);
-            }
-            if (state is GetMoviesFailure) {
-              return FailureView(
-                type: state.type,
-                onRetry: () => context.read<GetMoviesBloc>().add(GetMovies()),
-              );
-            }
-            return const UnKnownState();
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class HorizontalMovies extends StatelessWidget {
-  final String title;
-  final List<MovieSummary> projects;
-
-  const HorizontalMovies({
-    Key? key,
-    required this.title,
-    required this.projects,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
-          child: Text(
-            title,
-            style: context.theme.textTheme.titleLarge,
-          ),
-        ),
-        SizedBox(
-            height: 220,
-            child: ListView.builder(
-              itemCount: projects.length,
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              HorizontalMoviesWidget(
+                title: 'Popular',
+                type: MovieListType.category,
+                param: 'popular',
               ),
-              itemBuilder: (context, index) {
-                final project = projects[index];
-                return Padding(
-                  padding: const EdgeInsets.only(right: 12),
-                  child: Container(
-                    height: 200,
-                    width: 135,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          "https://image.tmdb.org/t/p/w600_and_h900_bestv2/${project.imageUrl}",
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ))
-      ],
+              padding8,
+              HorizontalMoviesWidget(
+                title: 'Top rated',
+                type: MovieListType.category,
+                param: 'top_rated',
+              ),
+              padding8,
+              HorizontalMoviesWidget(
+                title: 'Upcoming',
+                type: MovieListType.category,
+                param: 'upcoming',
+              ),
+              padding8,
+              HorizontalMoviesWidget(
+                title: 'Action',
+                type: MovieListType.genre,
+                param: '28',
+              ),padding8,
+              HorizontalMoviesWidget(
+                title: 'Horror',
+                type: MovieListType.genre,
+                param: '27',
+              ),padding8,
+              HorizontalMoviesWidget(
+                title: 'Science Fiction',
+                type: MovieListType.genre,
+                param: '878',
+              ),padding8,
+              HorizontalMoviesWidget(
+                title: 'Animation',
+                type: MovieListType.genre,
+                param: '16',
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

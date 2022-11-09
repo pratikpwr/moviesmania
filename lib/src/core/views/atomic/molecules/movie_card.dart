@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_mania/src/core/constants/api_constants.dart';
 import 'package:movie_mania/src/core/extension/context_extension.dart';
 import 'package:movie_mania/src/core/views/atomic/molecules/shimmer_item.dart';
 import 'package:movie_mania/src/features/movie_details/screens/movie_details_screen.dart';
@@ -37,7 +38,7 @@ class MovieCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
             image: NetworkImage(
-              "https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.imageUrl}",
+              "${ApiConstants.movieImageBaseUrl}${movie.imageUrl}",
             ),
             fit: BoxFit.cover,
           ),

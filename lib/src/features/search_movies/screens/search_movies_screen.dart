@@ -49,7 +49,7 @@ class SearchMoviesScreen extends StatelessWidget {
                     );
                   }
                   if (state is SearchMoviesLoading) {
-                    return const Loader();
+                    return const MovieGridViewShimmer();
                   }
                   if (state is SearchMoviesSuccess) {
                     if (state.movies.isEmpty) {

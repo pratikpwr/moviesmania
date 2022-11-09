@@ -30,8 +30,8 @@ class GetMoviesBloc extends Bloc<GetMoviesEvent, GetMoviesState> {
       (failure) => emit(
         GetMoviesFailure(FailureType.fromFailure(failure)),
       ),
-      (projects) => emit(
-        GetMoviesSuccess(projects),
+      (movies) => emit(
+        GetMoviesSuccess(movies),
       ),
     );
   }

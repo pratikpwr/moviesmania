@@ -5,6 +5,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movie_mania/src/features/home/bloc/get_movies/get_movies_bloc.dart';
 import 'package:movie_mania/src/features/home/repository/home_repository.dart';
 import 'package:movie_mania/src/features/horizontal_movies/repository/horizontal_movies_repository.dart';
+import 'package:movie_mania/src/features/movie_details/repository/movie_details_repository.dart';
 import 'package:movie_mania/src/features/search_movies/repository/search_movies_repository.dart';
 
 import '../network/api_client.dart';
@@ -32,6 +33,12 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<SearchMoviesRepository>(
     () => SearchMoviesRepositoryImpl(
+      networkInfo: sl(),
+      apiClient: sl(),
+    ),
+  );
+  sl.registerLazySingleton<MovieDetailsRepository>(
+    () => MovieDetailsRepositoryImpl(
       networkInfo: sl(),
       apiClient: sl(),
     ),

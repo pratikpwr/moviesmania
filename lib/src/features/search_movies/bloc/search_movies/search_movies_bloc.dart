@@ -30,8 +30,8 @@ class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
       (failure) => emit(
         SearchMoviesFailure(FailureType.fromFailure(failure)),
       ),
-      (projects) => emit(
-        SearchMoviesSuccess(projects),
+      (movies) => emit(
+        SearchMoviesSuccess(movies),
       ),
     );
   }

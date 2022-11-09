@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_mania/src/features/search_movies/screens/profile_screen.dart';
 import 'package:movie_mania/src/features/search_movies/screens/search_movies_screen.dart';
 
-import '../../features/home/screens/home_screen.dart';
+import '../../../features/home/screens/home_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);

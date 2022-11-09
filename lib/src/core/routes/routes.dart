@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../views/bottom_nav_bar.dart';
+import '../views/widgets/bottom_nav_bar.dart';
 
 Route routes(RouteSettings settings) {
   switch (settings.name) {

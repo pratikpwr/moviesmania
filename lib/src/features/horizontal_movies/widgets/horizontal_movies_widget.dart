@@ -120,53 +120,38 @@ class MovieListShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding:const  EdgeInsets.all(16) ,child: Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            ShimmerItem.rectangular(
-              height: 22,
-              width: 110,
-            ),
-            ShimmerItem.rectangular(
-              height: 14,
-              width: 52,
-            ),
-          ],
-        ),
-        padding8,
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ShimmerItem.circular(
-                width: 160,
-                height: kMovieCardHeight,
-                shapeBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              ShimmerItem.rectangular(
+                height: 22,
+                width: 110,
               ),
-              padding8,
-              ShimmerItem.circular(
-                width: 160,
-                height: kMovieCardHeight,
-                shapeBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              padding8,
-              ShimmerItem.circular(
-                width: 160,
-                height: kMovieCardHeight,
-                shapeBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              ShimmerItem.rectangular(
+                height: 14,
+                width: 52,
               ),
             ],
           ),
-        )
-      ],
-    ),);
+          padding8,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: const [
+                MovieCardShimmer(),
+                padding8,
+                MovieCardShimmer(),
+                padding8,
+                MovieCardShimmer(),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

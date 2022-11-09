@@ -34,8 +34,8 @@ class MovieListBloc extends Bloc<MovieListEvent, MovieListState> {
       (failure) => emit(
         MovieListFailure(FailureType.fromFailure(failure)),
       ),
-      (projects) => emit(
-        MovieListSuccess(projects),
+      (movies) => emit(
+        MovieListSuccess(movies),
       ),
     );
   }

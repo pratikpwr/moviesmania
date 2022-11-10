@@ -8,6 +8,7 @@ import '../../../../features/home/models/movie_summary_model.dart';
 import '../atoms/padding.dart';
 
 const kMovieCardHeight = 250.0;
+const kMovieCardWidth = 160.0;
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -32,7 +33,7 @@ class MovieCard extends StatelessWidget {
       },
       child: Container(
         height: kMovieCardHeight,
-        width: 160,
+        width: kMovieCardWidth,
         decoration: BoxDecoration(
           color: Colors.grey[400],
           borderRadius: BorderRadius.circular(10),

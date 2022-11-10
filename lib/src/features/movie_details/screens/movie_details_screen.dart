@@ -130,7 +130,7 @@ class MovieDetailsWidget extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               Icons.star_rounded,
               size: 20,
             ),
